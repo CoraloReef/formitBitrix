@@ -15,20 +15,11 @@ Create leads in Bitrix24 from MODX FormIt
 <input type="hidden" name="TITLE" id="" value="Lead title">
     <fieldset>
         <legend>Send message</legend>
-        <div class="form-group">
-            <input type="text" name="NAME" placeholder="Имя" value="[[!+fi.NAME]]" required>
-		</div>
+        <input type="text" name="NAME" placeholder="Имя" value="[[!+fi.NAME]]" required>
+        <input type="email" name="EMAIL_HOME" placeholder="Email" value="[[!+fi.EMAIL_HOME]]" required>
+		<textarea name="COMMENTS" placeholder="Message" required>[[!+fi.COMMENTS]]</textarea>
 
-        <div class="form-group">
-            <input type="email" name="EMAIL_HOME" placeholder="Email" value="[[!+fi.EMAIL_HOME]]" required>
-		</div>
-        <div class="form-group">
-            <textarea name="COMMENTS" placeholder="Message" required>[[!+fi.COMMENTS]]</textarea>
-		</div>
-
-        <div class="form-group">
-            <input name="submit" type="submit" value="Send">
-        </div>
+        <input name="submit" type="submit" value="Send">
     </fieldset>
 </form>
 ```
