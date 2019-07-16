@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		'NAME' => $leadData['NAME'],
 		'EMAIL_HOME' => $leadData['EMAIL_HOME'],
 		'COMMENTS' => $leadData['COMMENTS'],
-    'ASSIGNED_BY_ID' => '', // id responsible for lead
+    		'ASSIGNED_BY_ID' => '', // id responsible for lead
 	);
 
 	// append authorization data
