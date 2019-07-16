@@ -6,31 +6,30 @@ Create leads in Bitrix24 from MODX FormIt
 ```php
 [[!FormIt?
     &hooks=`rest.php`
-    &validate=`NAME:required:minLength=^2^,EMAIL_HOME:required:email,COMMENTS:required:minLength=^10^`
+    &validate=`NAME:required,EMAIL_HOME:required:email,COMMENTS:required`
     &FormFields=`TITLE,NAME,EMAIL_HOME,COMMENTS`
-    &successMessage=`<div class="uk-alert uk-alert-large">Ваша заявка принята!</div>`
     &submitVar=`submit`
-    ]]
-    [[!+fi.successMessage]]
-<form class="uk-form uk-form-horizontal" id="contactForm" method="post" action="[[~[[*id]]]]">
-<input type="hidden" name="TITLE" id="" value="Заявка">
+]]
+
+<form method="post" action="[[~[[*id]]]]">
+<input type="hidden" name="TITLE" id="" value="Lead title">
     <fieldset>
-        <legend>Отправить сообщение</legend>
-        <div class="uk-form-row">
-		<input type="text" name="NAME" placeholder="Имя" class=" uk-width-1-1 uk-form-large[[!+fi.error.NAME:notempty=` uk-form-danger`]]" value="[[!+fi.NAME]]" required>
-		[[!+fi.error.NAME:notempty=`<p class="uk-text-danger uk-text-bold">Поле должно содержать не менее 2 символов</p>`]]
+        <legend>Send message</legend>
+        <div class="form-group">
+            <input type="text" name="NAME" placeholder="Имя" value="[[!+fi.NAME]]" required>
 		</div>
 
-        <div class="uk-form-row">
-		<input type="email" name="EMAIL_HOME" placeholder="Email" class=" uk-width-1-1 uk-form-large[[!+fi.error.EMAIL_HOME:notempty=` uk-form-danger`]]" value="[[!+fi.EMAIL_HOME]]" required>
+        <div class="form-group">
+            <input type="email" name="EMAIL_HOME" placeholder="Email" value="[[!+fi.EMAIL_HOME]]" required>
 		</div>
-		[[!+fi.error.EMAIL_HOME:notempty=`<p class="uk-text-danger uk-text-bold">Укажите ваш Email</p>`]]
-		<div class="uk-form-row">
-		<textarea  name="COMMENTS" cols="30" rows="6" placeholder="Сообщение" class=" uk-width-1-1 uk-form-large[[!+fi.error.COMMENTS:notempty=` uk-form-danger`]]" required>[[!+fi.COMMENTS]]</textarea>
-		[[!+fi.error.COMMENTS:notempty=`<p class="uk-text-danger uk-text-bold">Поле должно содержать не менее 10 символов</p>`]]
+        <div class="form-group">
+            <textarea name="COMMENTS" placeholder="Message" required>[[!+fi.COMMENTS]]</textarea>
+            [[!+fi.error.COMMENTS:notempty=`<p class="uk-text-danger uk-text-bold">Поле должно содержать не менее 10 символов</p>`]]
 		</div>
 
-		<div class="uk-form-row"><input class="uk-button uk-button-large uk-button-primary" name="submit" type="submit" value="Отправить сообщение »"></div>
+        <div class="form-group">
+            <input name="submit" type="submit" value="Send">
+        </div>
     </fieldset>
 </form>
 ```
