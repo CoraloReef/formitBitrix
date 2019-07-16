@@ -24,7 +24,6 @@ Create leads in Bitrix24 from MODX FormIt
 		</div>
         <div class="form-group">
             <textarea name="COMMENTS" placeholder="Message" required>[[!+fi.COMMENTS]]</textarea>
-            [[!+fi.error.COMMENTS:notempty=`<p class="uk-text-danger uk-text-bold">Поле должно содержать не менее 10 символов</p>`]]
 		</div>
 
         <div class="form-group">
