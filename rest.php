@@ -13,8 +13,7 @@ define('CRM_PASSWORD', 'yourpassword'); // password of a CRM user
 /********************************************************************************************/
 
 // POST processing
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$leadData = $_POST;
 
 	// get lead data from the form
@@ -27,20 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	);
 
 	// append authorization data
-	if (defined('CRM_AUTH'))
-	{
+	if (defined('CRM_AUTH')) {
 		$postData['AUTH'] = CRM_AUTH;
-	}
-	else
-	{
+	} else {
 		$postData['LOGIN'] = CRM_LOGIN;
 		$postData['PASSWORD'] = CRM_PASSWORD;
 	}
 
 	// open socket to CRM
 	$fp = fsockopen("ssl://".CRM_HOST, CRM_PORT, $errno, $errstr, 30);
-	if ($fp)
-	{
+	if ($fp) {
 		// prepare POST data
 		$strPostData = '';
 		foreach ($postData as $key => $value)
@@ -70,13 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		$response = explode("\r\n\r\n", $result);
 
 		$output = '<pre>'.print_r($response[1], 1).'</pre>';
-	}
-	else
-	{
+	} else {
 		echo 'Connection Failed! '.$errstr.' ('.$errno.')';
 	}
 }
-else
-{
+else {
 	$output = '';
 }
